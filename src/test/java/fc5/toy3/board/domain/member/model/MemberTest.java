@@ -47,4 +47,26 @@ class MemberTest {
             assertThat(newbie.getAuthorities().get(0)).isSameAs(userAuthority);
         }
     }
+
+    @Transactional
+    @DisplayName("무권환 회원에게 모든 권한 추가")
+    @Test
+    void whenAddAllAuthoritiesToMemberWithNoAuthority_thenGetsAll() {
+        // given
+        Member newbie = memberFactory.createNewbie(1);
+        assertThat(newbie.getAuthorities()).hasSize(0);
+
+        AuthorityType[] authorityTypes = AuthorityType.values();
+        for (int i = 1; i <= authorityTypes.length; ++i) {
+            // when
+            Authority userAuthority = authorityRepository.findById((long) i);
+            newbie.addAuthority(userAuthority);
+        }
+
+        // then
+        assertThat(newbie.getAuthorities()).hasSize(authorityTypes.length);
+        for (int i = 0; i < authorityTypes.length; ++i) {
+            assertThat(newbie.getAuthorities().get(i).getType()).isSameAs(authorityTypes[i]);
+        }
+    }
 }
