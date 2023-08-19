@@ -1,14 +1,13 @@
 package fc5.toy3.board.domain.member.model;
 
 import fc5.toy3.board.domain.BaseEntity;
-import fc5.toy3.board.domain.grade.model.Grade;
 import fc5.toy3.board.domain.authority.model.Authority;
+import fc5.toy3.board.domain.grade.model.Grade;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Entity
@@ -28,4 +27,17 @@ public class Member extends BaseEntity {
     private String password;
     @Column(length = 16, unique = true, nullable = false)
     private String nickname;
+    @Builder.Default
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "member_authority",
+            joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
+    private List<Authority> authorities = new ArrayList<>();
+
+    public void addAuthority(@NonNull Authority authority) {
+        if (!authorities.contains(authority)) {
+            authorities.add(authority);
+            authority.addMember(this);
+        }
+    }
 }
