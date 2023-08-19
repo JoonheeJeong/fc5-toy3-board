@@ -47,6 +47,29 @@ class MemberRepositoryTest {
         }
     }
 
+    @Transactional
+    @DisplayName("username으로 조회 성공")
+    @Test
+    void whenExists_thenGetsMember() {
+        // given
+        Member savedMember = memberRepository.save(buildNewbie(1));
+
+        // when
+        Member foundMember = memberRepository.findByUsername(savedMember.getUsername());
+
+        // then
+        Long id = foundMember.getId();
+        assertThat(id).isNotNull();
+    }
+
+    @Transactional(readOnly = true)
+    @DisplayName("username으로 조회 실패")
+    @Test
+    void whenNotExists_thenThrows() {
+        assertThatThrownBy(() -> memberRepository.findByUsername("not_exists"))
+                .isInstanceOf(EmptyResultDataAccessException.class);
+    }
+
     private Member buildNewbie(int i) {
         return buildMember(1L, i);
     }
