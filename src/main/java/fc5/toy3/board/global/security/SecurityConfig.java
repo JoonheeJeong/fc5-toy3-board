@@ -1,4 +1,4 @@
-package fc5.toy3.board.global.security.config;
+package fc5.toy3.board.global.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
