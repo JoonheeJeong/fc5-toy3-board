@@ -1,3 +1,4 @@
+drop table if exists member_authority cascade;
 drop table if exists member cascade;
 drop table if exists authority cascade;
 drop table if exists grade cascade;
@@ -26,4 +27,14 @@ create table member (
     created_at  timestamp       not null default now(),
     updated_at  timestamp,
     foreign key (grade_id) references grade(id)
+);
+
+create table member_authority (
+    id            bigint        not null auto_increment primary key,
+    member_id     bigint        not null,
+    authority_id  bigint        not null,
+    created_at    timestamp     not null default now(),
+    updated_at    timestamp,
+    foreign key (member_id)    references member(id),
+    foreign key (authority_id) references authority(id)
 );
