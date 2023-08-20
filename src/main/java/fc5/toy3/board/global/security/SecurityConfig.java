@@ -1,5 +1,6 @@
 package fc5.toy3.board.global.security;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,9 +9,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+@RequiredArgsConstructor
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
+
+    private final CustomUserDetailsService customUserDetailsService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -22,6 +26,7 @@ public class SecurityConfig {
             .formLogin(formLogin -> formLogin
                 .loginPage("/login") // 사용자 정의 로그인 페이지 지정
                 .permitAll()
+                .defaultSuccessUrl("/board")
             );
 
         return http.build();
