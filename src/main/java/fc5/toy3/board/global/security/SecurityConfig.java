@@ -22,14 +22,22 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+//            .csrf().disable()
             .authorizeRequests(authorize -> authorize
                 .antMatchers("/hello/**").permitAll() // /hello 경로는 모두에게 허용
                 .anyRequest().authenticated() // 그 외 경로는 인증 필요
             )
             .formLogin(formLogin -> formLogin
                 .loginPage("/login") // 사용자 정의 로그인 페이지 지정
-                .permitAll()
                 .defaultSuccessUrl("/board")
+                .permitAll()
+            )
+            .logout(logout -> logout
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login")
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID")
+                    .permitAll()
             );
 
         return http.build();
