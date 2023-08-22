@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
@@ -23,5 +24,13 @@ class LoginControllerTest {
     void whenAnybodyAccessToLoginPage_thenSuccess() throws Exception {
         mockMvc.perform(get("/login"))
                 .andExpect(status().isOk());
+    }
+
+    @DisplayName("미인증 접속은 login으로 리디렉션")
+    @Test
+    void whenNotAuthenticated_thenShouldBeUnauthorized() throws Exception {
+        mockMvc.perform(get("/board"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern("**/login"));
     }
 }
