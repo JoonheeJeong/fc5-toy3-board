@@ -1,7 +1,7 @@
-package fc5.toy3.board.domain.authority.repository;
+package fc5.toy3.board.domain.member.dao;
 
-import fc5.toy3.board.domain.authority.exception.NotFoundAuthorityException;
-import fc5.toy3.board.domain.authority.model.Authority;
+import fc5.toy3.board.domain.member.exception.NotFoundAuthorityException;
+import fc5.toy3.board.domain.member.entity.Authority;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

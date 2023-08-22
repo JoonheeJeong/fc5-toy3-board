@@ -1,8 +1,6 @@
-package fc5.toy3.board.domain.member.model;
+package fc5.toy3.board.domain.member.entity;
 
 import fc5.toy3.board.domain.BaseEntity;
-import fc5.toy3.board.domain.authority.model.Authority;
-import fc5.toy3.board.domain.grade.model.Grade;
 import lombok.*;
 import org.springframework.security.core.userdetails.UserDetails;
 

@@ -1,7 +1,7 @@
-package fc5.toy3.board.domain.grade.model;
+package fc5.toy3.board.domain.member.entity;
 
 import fc5.toy3.board.domain.BaseEntity;
-import fc5.toy3.board.domain.grade.type.GradeType;
+import fc5.toy3.board.domain.member.type.GradeType;
 import lombok.Getter;
 
 import javax.persistence.Column;

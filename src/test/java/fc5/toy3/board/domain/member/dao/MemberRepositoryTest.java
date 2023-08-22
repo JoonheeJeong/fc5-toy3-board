@@ -1,9 +1,9 @@
-package fc5.toy3.board.domain.member.repository;
+package fc5.toy3.board.domain.member.dao;
 
-import fc5.toy3.board.domain.grade.type.GradeType;
+import fc5.toy3.board.domain.member.type.GradeType;
 import fc5.toy3.board.domain.member.MemberFactory;
 import fc5.toy3.board.domain.member.MemberTestConfig;
-import fc5.toy3.board.domain.member.model.Member;
+import fc5.toy3.board.domain.member.entity.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

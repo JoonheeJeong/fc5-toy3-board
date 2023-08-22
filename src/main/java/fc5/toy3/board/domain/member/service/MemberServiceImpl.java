@@ -1,6 +1,6 @@
 package fc5.toy3.board.domain.member.service;
 
-import fc5.toy3.board.domain.member.repository.MemberRepository;
+import fc5.toy3.board.domain.member.dao.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
