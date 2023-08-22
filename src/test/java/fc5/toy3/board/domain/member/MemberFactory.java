@@ -30,8 +30,8 @@ public class MemberFactory {
 
         String formattedId = String.format("%02d", i);
         GradeType gradeType = GradeType.values()[((int) gradeId) - 1];
-        String prefix = gradeType.name().toLowerCase();
-        String prefixDesc = gradeType.getDescription().substring(0, 2).toLowerCase();
+        String prefix = "test_" + gradeType.name().toLowerCase();
+        String prefixDesc = "테스트" + gradeType.getDescription().substring(0, 2).toLowerCase();
 
         return Member.builder()
                 .grade(gradeRepository.findById(gradeId))
