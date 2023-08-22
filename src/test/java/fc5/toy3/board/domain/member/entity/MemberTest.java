@@ -1,23 +1,17 @@
-package fc5.toy3.board.domain.member.model;
+package fc5.toy3.board.domain.member.entity;
 
-import fc5.toy3.board.domain.authority.model.Authority;
-import fc5.toy3.board.domain.authority.repository.AuthorityRepository;
-import fc5.toy3.board.domain.authority.type.AuthorityType;
-import fc5.toy3.board.domain.grade.repository.GradeRepository;
-import fc5.toy3.board.domain.grade.type.GradeType;
+import fc5.toy3.board.domain.member.dao.AuthorityRepository;
+import fc5.toy3.board.domain.member.type.AuthorityType;
 import fc5.toy3.board.domain.member.MemberFactory;
 import fc5.toy3.board.domain.member.MemberTestConfig;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @Import(MemberTestConfig.class)
 @SpringBootTest
@@ -68,5 +62,10 @@ class MemberTest {
         for (int i = 0; i < authorityTypes.length; ++i) {
             assertThat(newbie.getAuthorities().get(i).getType()).isSameAs(authorityTypes[i]);
         }
+    }
+
+    @Test
+    void gen() {
+        System.out.println(memberFactory.generateEncodedPassword("admin"));
     }
 }

@@ -1,4 +1,4 @@
-package fc5.toy3.board.domain.grade.type;
+package fc5.toy3.board.domain.member.type;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

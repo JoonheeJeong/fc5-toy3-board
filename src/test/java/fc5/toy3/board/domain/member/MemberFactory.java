@@ -1,8 +1,8 @@
 package fc5.toy3.board.domain.member;
 
-import fc5.toy3.board.domain.grade.repository.GradeRepository;
-import fc5.toy3.board.domain.grade.type.GradeType;
-import fc5.toy3.board.domain.member.model.Member;
+import fc5.toy3.board.domain.member.dao.GradeRepository;
+import fc5.toy3.board.domain.member.type.GradeType;
+import fc5.toy3.board.domain.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -40,5 +40,9 @@ public class MemberFactory {
                 .nickname(prefixDesc + formattedId)
                 .password(passwordEncoder.encode("password"))
                 .build();
+    }
+
+    public String generateEncodedPassword(String password) {
+        return passwordEncoder.encode(password);
     }
 }

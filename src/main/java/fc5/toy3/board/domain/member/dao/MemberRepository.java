@@ -1,6 +1,6 @@
-package fc5.toy3.board.domain.member.repository;
+package fc5.toy3.board.domain.member.dao;
 
-import fc5.toy3.board.domain.member.model.Member;
+import fc5.toy3.board.domain.member.entity.Member;
 
 public interface MemberRepository {
 

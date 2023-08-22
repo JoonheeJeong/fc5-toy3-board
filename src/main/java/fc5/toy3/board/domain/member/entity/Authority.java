@@ -1,8 +1,7 @@
-package fc5.toy3.board.domain.authority.model;
+package fc5.toy3.board.domain.member.entity;
 
 import fc5.toy3.board.domain.BaseEntity;
-import fc5.toy3.board.domain.authority.type.AuthorityType;
-import fc5.toy3.board.domain.member.model.Member;
+import fc5.toy3.board.domain.member.type.AuthorityType;
 import lombok.Getter;
 import lombok.NonNull;
 import org.springframework.security.core.GrantedAuthority;

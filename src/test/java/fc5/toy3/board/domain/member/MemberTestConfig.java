@@ -1,6 +1,6 @@
 package fc5.toy3.board.domain.member;
 
-import fc5.toy3.board.domain.grade.repository.GradeRepository;
+import fc5.toy3.board.domain.member.dao.GradeRepository;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;

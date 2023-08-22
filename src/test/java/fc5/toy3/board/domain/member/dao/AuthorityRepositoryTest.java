@@ -1,8 +1,9 @@
-package fc5.toy3.board.domain.authority.repository;
+package fc5.toy3.board.domain.member.dao;
 
-import fc5.toy3.board.domain.authority.exception.NotFoundAuthorityException;
-import fc5.toy3.board.domain.authority.model.Authority;
-import fc5.toy3.board.domain.authority.type.AuthorityType;
+import fc5.toy3.board.domain.member.dao.AuthorityRepository;
+import fc5.toy3.board.domain.member.exception.NotFoundAuthorityException;
+import fc5.toy3.board.domain.member.entity.Authority;
+import fc5.toy3.board.domain.member.type.AuthorityType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

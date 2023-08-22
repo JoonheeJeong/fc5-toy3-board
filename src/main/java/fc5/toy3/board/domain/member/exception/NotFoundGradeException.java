@@ -1,4 +1,4 @@
-package fc5.toy3.board.domain.grade.exception;
+package fc5.toy3.board.domain.member.exception;
 
 import java.util.NoSuchElementException;
 

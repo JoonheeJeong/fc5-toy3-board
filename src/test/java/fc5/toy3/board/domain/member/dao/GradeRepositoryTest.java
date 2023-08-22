@@ -1,8 +1,9 @@
-package fc5.toy3.board.domain.grade.repository;
+package fc5.toy3.board.domain.member.dao;
 
-import fc5.toy3.board.domain.grade.exception.NotFoundGradeException;
-import fc5.toy3.board.domain.grade.model.Grade;
-import fc5.toy3.board.domain.grade.type.GradeType;
+import fc5.toy3.board.domain.member.exception.NotFoundGradeException;
+import fc5.toy3.board.domain.member.dao.GradeRepository;
+import fc5.toy3.board.domain.member.entity.Grade;
+import fc5.toy3.board.domain.member.type.GradeType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
