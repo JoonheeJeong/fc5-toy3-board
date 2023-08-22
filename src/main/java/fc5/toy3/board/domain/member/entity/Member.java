@@ -31,7 +31,7 @@ public class Member extends BaseEntity implements UserDetails {
     @JoinTable(name = "member_authority",
             joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
-    private List<Authority> authorities = new ArrayList<>();
+    private final List<Authority> authorities = new ArrayList<>(2);
 
     @Override
     public boolean isAccountNonExpired() {
