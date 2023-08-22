@@ -9,9 +9,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -37,5 +39,18 @@ class MemberServiceImplTest {
         Mockito.verify(memberRepository, times(1))
                 .findByUsername(anyString());
         assertThat(userDetails).isNotNull();
+    }
+
+    @DisplayName("해당 username의 회원 없음")
+    @Test
+    void whenUsernameNotExists_thenShouldThrow() {
+        when(memberRepository.findByUsername(anyString())).thenThrow(EmptyResultDataAccessException.class);
+
+
+        assertThatThrownBy(() -> sut.loadUserByUsername(anyString()))
+                .isInstanceOf(EmptyResultDataAccessException.class);
+
+        Mockito.verify(memberRepository, times(1))
+                .findByUsername(anyString());
     }
 }
