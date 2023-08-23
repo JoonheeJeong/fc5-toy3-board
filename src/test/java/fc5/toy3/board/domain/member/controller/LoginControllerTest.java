@@ -8,7 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static fc5.toy3.board.domain.member.controller.WithMockCustomUser.USER_USERNAME;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @AutoConfigureMockMvc
@@ -43,5 +45,16 @@ class LoginControllerTest {
                 .andExpect(view().name("board"))
                 .andExpect(model().attributeExists("username"))
                 .andExpect(model().attribute("username", USER_USERNAME));
+    }
+
+    @DisplayName("인증 실패 시 로그인 에러 페이지로 리디렉션")
+    @Test
+    void whenAuthenticationFailed_thenShouldBeRedirectedToLoginWithError() throws Exception {
+        mockMvc.perform(post("/login")
+                        .param("username", "invalid_username")
+                        .param("password", "invalid_password")
+                        .with(csrf()))
+                .andExpect(status().isFound())
+                .andExpect(redirectedUrl("/login?error"));
     }
 }
