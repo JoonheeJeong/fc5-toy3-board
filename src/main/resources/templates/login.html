@@ -8,6 +8,9 @@
   <h1>로그인 페이지입니다.</h1>
   <div class="form">
     <form method="post" th:action="@{/login}">
+      <div th:if="${error != null}">
+        <p class="error">아이디나 비밀번호가 맞지 않습니다.</p>
+      </div>
       <div>
         <input type="text" id="username" name="username" placeholder="로그인 아이디">
       </div>
