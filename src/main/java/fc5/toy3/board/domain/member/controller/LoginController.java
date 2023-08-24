@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
@@ -11,13 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
     @GetMapping("/login")
-    public String getLoginPage(
-            @RequestParam(required = false) String error,
+    public String getLoginPage() {
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String handleLoginError(
+            @RequestParam String error,
             Model model) {
 
-        if (error != null) {
-            model.addAttribute("error", error);
-        }
+        model.addAttribute("error", error);
         return "login";
     }
 }
