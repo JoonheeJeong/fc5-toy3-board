@@ -47,14 +47,14 @@ class LoginControllerTest {
                 .andExpect(model().attribute("username", USER_USERNAME));
     }
 
-    @DisplayName("인증 실패 시 로그인 에러 페이지로 리디렉션")
+    @DisplayName("인증 실패 시 로그인 에러 페이지로 포워딩")
     @Test
     void whenAuthenticationFailed_thenShouldBeRedirectedToLoginWithError() throws Exception {
         mockMvc.perform(post("/login")
                         .param("username", "invalid_username")
                         .param("password", "invalid_password")
                         .with(csrf()))
-                .andExpect(status().isFound())
-                .andExpect(redirectedUrl("/login?error"));
+                .andExpect(status().isOk())
+                .andExpect(forwardedUrl("/login?error"));
     }
 }
